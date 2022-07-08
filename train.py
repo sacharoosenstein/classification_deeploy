@@ -9,20 +9,20 @@ import shap
 #Load dataset
 iris = datasets.load_iris()
 data=pd.DataFrame({
-    'sepal length':iris.data[:,0],
-    'sepal width':iris.data[:,1],
-    'petal length':iris.data[:,2],
-    'petal width':iris.data[:,3],
+    'sepal_length':iris.data[:,0],
+    'sepal_width':iris.data[:,1],
+    'petal_length':iris.data[:,2],
+    'petal_width':iris.data[:,3],
     'species':iris.target
 })
 data.head()
 
-X=data[['sepal length', 'sepal width', 'petal length', 'petal width']]  # Features
+X=data[['sepal_length', 'sepal_width', 'petal_length', 'petal_width']]  # Features
 y=data['species']  # Labels
 
 # Split dataset into training set and test set
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3) # 70% training and 30% test
-
+print(X.shape)
 #Create a Classifier
 clf=RandomForestClassifier(n_estimators=100)
 
@@ -30,14 +30,14 @@ clf=RandomForestClassifier(n_estimators=100)
 clf.fit(X_train,y_train)
 
 #Create shap explainer
-explainer = shap.KernelExplainer(clf.predict_proba, X_train)
-shap_values = explainer.shap_values(X_test.iloc[0,:])
-shap.force_plot(explainer.expected_value[0], shap_values[0], X_test.iloc[0,:])
+#explainer = shap.KernelExplainer(clf.predict, X_train)
+#shap_values = explainer.shap_values(X_test.iloc[0,:])
+#shap.force_plot(explainer.expected_value[0], shap_values[0], X_test.iloc[0,:])
 
 #Save model as pickle 
-filename = 'model.sav'
-pickle.dump(clf, open(filename, 'wb')) #write binary
+filename = 'model/model.joblib'
+joblib.dump(clf , filename)
 
 #Save explainer as pickle
-ex_filename = 'explainer.bz2'
-joblib.dump(explainer, filename=ex_filename, compress=('bz2', 9))
+#ex_filename = 'explainer.bz2'
+#joblib.dump(explainer, filename=ex_filename, compress=('bz2', 9))
