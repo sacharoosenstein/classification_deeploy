@@ -7,7 +7,7 @@ import joblib
 import shap 
 import dill
 
-ex2 = joblib.load(filename='explainer/explainer.joblib')
+ex2 = joblib.load(filename='explainer/explainer.dill')
 
 
 #Load dataset

@@ -6,6 +6,8 @@ import pickle
 import joblib
 import shap 
 import dill
+from io import BytesIO
+
 
 #Load dataset
 iris = datasets.load_iris()
@@ -31,7 +33,7 @@ clf=RandomForestClassifier(n_estimators=100)
 clf.fit(X_train,y_train)
 
 #Create shap explainer
-explainer = shap.KernelExplainer(clf.predict, X_train)
+explainer = shap.KernelExplainer(clf.predict_proba, X_train)
 #shap_values = explainer.shap_values(X_test.iloc[0,:])
 #print(explainer)
 #shap.force_plot(explainer.expected_value[0], shap_values[0], X_test.iloc[0,:])
@@ -42,5 +44,6 @@ joblib.dump(clf , filename)
 
 #Save explainer as pickle
 ex_filename = 'explainer/explainer.dill'
-joblib.dump(explainer, ex_filename)
+with open("explainer/explainer.dill","wb") as f:
+    pickle.dump(explainer, f)
 
