@@ -41,6 +41,6 @@ filename = 'model/model.joblib'
 joblib.dump(clf , filename)
 
 #Save explainer as pickle
-ex_filename = 'explainer/explainer.joblib'
+ex_filename = 'explainer/explainer.dill'
 joblib.dump(explainer, ex_filename)
 
