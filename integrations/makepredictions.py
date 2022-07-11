@@ -23,3 +23,4 @@ deployment_url = "https://api.fullorbit.deeploy.ml/v2/workspaces/b7bb2d93-12b4-4
 response = requests.get(deployment_url, headers=headers)
 logs = response.json()
 print(logs)
+

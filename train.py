@@ -33,7 +33,7 @@ clf=RandomForestClassifier(n_estimators=100)
 clf.fit(X_train,y_train)
 
 #Create shap explainer
-explainer = shap.KernelExplainer(clf.predict_proba, X_train)
+explainer = shap.KernelExplainer(clf.predict, X_train)
 #shap_values = explainer.shap_values(X_test.iloc[0,:])
 #print(explainer)
 #shap.force_plot(explainer.expected_value[0], shap_values[0], X_test.iloc[0,:])
