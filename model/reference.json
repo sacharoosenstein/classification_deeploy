@@ -1,7 +1,7 @@
 {
     "reference": {
         "blob": {
-            "url": "https://deeployfostorageaccount.blob.core.windows.net/deeploymodellen/model.joblib",
+            "url": "https://deeployfostorageaccount.blob.core.windows.net/deeploymodellen/model.joblib"
         }
     }
 }
