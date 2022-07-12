@@ -1,7 +1,8 @@
-{
+{  
     "reference": {
         "blob": {
-            "url": "https://deeployfostorageaccount.blob.core.windows.net/deeploymodellen/model.joblib"
-        }
-    }
-}
+            "url": "https://deeployfostorageaccount.blob.core.windows.net/deeploymodellen/model.joblib",
+            "credentialsId": "21b5ba95-0efe-4dbe-b21a-1f2c43f6e7d3"
+         }  
+     } 
+   }
