@@ -1,35 +1,25 @@
-from deeploy import Client
-from deeploy import DeployOptions
-from deeploy.enums import ModelType
-from deeploy import Client, DeployOptions
+import requests
 
-workspace_id = 'b7bb2d93-12b4-49aa-b264-04aa41d09b1e'
-deployment_id = '71099933-bdf5-4765-abed-ccb54a3b5796'
+token = 'ZOCN768pimcCrxWy6VyXiGrQARrzIPfuC7rKWJ68'
+deployment_url = "https://api.fullorbit.deeploy.ml/v2/workspaces/b7bb2d93-12b4-49aa-b264-04aa41d09b1e/deployments/6df12424-dc91-4853-b5f8-d9d57d732be6/actuals"
 
-client_options = {
-    'deployment_token': 'yFjkjNUhHmf4I1Z2yZl3n6ZSj7L2G4RyU61wuzwq',
-    'host': 'fullorbit.deeploy.ml',
-    'workspace_id': workspace_id,
-}
-client = Client(**client_options)
-print(client)
 
-request_body = {
-    "instances": [
-        [6.9, 2.8, 4.8, 1.7]
-    ]
+headers = {
+    'Authorization': 'Bearer %s' % token,
 }
 
-prediction = client.predict(deployment_id, request_body)
-explanation = client.explain(deployment_id, request_body)
-
-request_log_id=explanation['requestLogId']
-prediction_log_id=explanation['predictionLogIds'][0]
-
-evaluation_input = {
-    "result": 2,
-    "value": {"predictions": [False]},
-    "explanation": "example"
+actuals_input = {
+  "predictionIds": ['9bb42469-188b-43d3-adc1-6684f4b17f6f', '05c15be7-60c2-4892-a585-45d0d6f52568', '3d2e1b0c-341d-4725-9703-c088b2c12296', 'ee89dbc1-31f2-4ce9-b941-c912bb562670', '07376d0e-7845-4bc1-8ce6-a70e10dc9c92', '838e506f-acf2-4273-ab9e-c8f79f30c96a'],
+  "actualValues": [
+    {"predictions": [1]},
+    {"predictions": [1]},
+    {"predictions": [1]},
+    {"predictions": [1]},
+    {"predictions": [1]},
+    {"predictions": [1]}
+  ]
 }
+response = requests.put(deployment_url, headers=headers, json=actuals_input)
+print(response)
 
-client.evaluate(deployment_id, request_log_id, prediction_log_id, evaluation_input)
+

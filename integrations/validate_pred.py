@@ -1,8 +1,8 @@
 import requests
 
 
-token = 'yFjkjNUhHmf4I1Z2yZl3n6ZSj7L2G4RyU61wuzwq'
-deployment_url = "https://api.fullorbit.deeploy.ml/v2/workspaces/b7bb2d93-12b4-49aa-b264-04aa41d09b1e/deployments/71099933-bdf5-4765-abed-ccb54a3b5796/requestLogs/d5fafece-4e57-47e2-aab8-e5dab4f7d3d5/predictionLogs/c5274b59-1e43-42ec-8d62-0e00b8206a86/validations"
+token = 'ZOCN768pimcCrxWy6VyXiGrQARrzIPfuC7rKWJ68'
+deployment_url = "https://api.fullorbit.deeploy.ml/v2/workspaces/b7bb2d93-12b4-49aa-b264-04aa41d09b1e/deployments/6df12424-dc91-4853-b5f8-d9d57d732be6/requestLogs/338fb733-5fb9-44d8-a825-3e7f9cacabc4/predictionLogs/838e506f-acf2-4273-ab9e-c8f79f30c96a/validations"
 
 # Example
 validation_input = {
